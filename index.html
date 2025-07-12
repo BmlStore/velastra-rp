@@ -114,6 +114,45 @@
             color: #ffffff;
         }
 
+        /* Chat Styles */
+        .chat-container {
+            margin-top: 20px;
+            background: #2c2c2c;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-box {
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding: 5px;
+            background: #1e1e1e;
+            border-radius: 5px;
+        }
+
+        .chat-input {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .send-button {
+            padding: 10px 15px;
+            background: #DAA520;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background: #ffffff;
+            color: #DAA520;
+        }
+
         /* Responsive Design */
         @media (max-width: 600px) {
             h1 {
@@ -174,10 +213,34 @@
                 <li>Discord: <a href="https://discord.gg/Wx23Va5j" target="_blank">Bergabung di Discord</a></li>
             </ul>
         </section>
+
+        <section class="chat-container">
+            <h2>Chat</h2>
+            <div class="chat-box" id="chat-box"></div>
+            <input type="text" id="chat-input" class="chat-input" placeholder="Ketik pesan...">
+            <button class="send-button" onclick="sendMessage()">Kirim</button>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Velastra Roleplay. Semua hak dilindungi.</p>
     </footer>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const chatBox = document.getElementById('chat-box');
+            const message = input.value.trim();
+
+            if (message) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                chatBox.appendChild(messageElement);
+                input.value = '';
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+            }
+        }
+    </script>
 </body>
-</html>
+            </html>
+                                                                 
